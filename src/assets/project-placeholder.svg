@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#1f2937" />
+      <stop offset="1" stop-color="#111827" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)" />
+  <g fill="#9ca3af" font-family="Arial, Helvetica, sans-serif" font-size="48" text-anchor="middle">
+    <text x="50%" y="48%">Project Thumbnail</text>
+    <text x="50%" y="58%" font-size="20">Replace with project image</text>
+  </g>
+</svg>
