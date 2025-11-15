@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectCard from '../components/ProjectCard.jsx';
 import '../styles/work.css';
 import placeholder from '../assets/project-placeholder.svg';
+import Navigation from '../components/Navigation.jsx';
 
 const projects = [
   {
@@ -30,6 +31,7 @@ const projects = [
 function WorkPage() {
   return (
     <main className="work-page">
+        <Navigation />
       <section className="work-intro">
         <h1>Work</h1>
         <p className="lead">Selected projects — click any card for details or external links.</p>
