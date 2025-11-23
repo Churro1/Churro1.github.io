@@ -7,10 +7,10 @@ import Navigation from '../components/Navigation.jsx';
 const projects = [
   {
     id: 1,
-    title: 'Project One',
-    description: 'A short summary of Project One — tech used, goal, and outcome.',
+    title: 'This Website! ',
+    description: 'Yep thats right! I built this website myself.',
     thumbnail: placeholder,
-    link: '#'
+    link: 'https://github.com/Churro1/portfolio.git/'
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ function WorkPage() {
         <Navigation />
       <section className="work-intro">
         <h1>Work</h1>
-        <p className="lead">Selected projects — click any card for details or external links.</p>
+        <p className="lead">Click any card for more details.</p>
       </section>
 
       <section className="projects-grid">
