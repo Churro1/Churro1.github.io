@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ghostkey",
+    "title": "GhostKey",
+    "description": "Native macOS keyboard and mouse input overlay.",
+    "tech": ["Rust", "Tauri v2", "React", "TypeScript"],
+    "checkpointData": {
+      "mileage": 12.5,
+      "elevation": 8500,
+      "x": 400,
+      "y": 600
+    }
+  },
+  {
+    "id": "wasatch-mahjong",
+    "title": "Wasatch Mahjong Platform",
+    "description": "Full-stack booking and management web application.",
+    "tech": ["Next.js", "Supabase", "Stripe"],
+    "checkpointData": {
+      "mileage": 25.0,
+      "elevation": 9200,
+      "x": 1200,
+      "y": 300
+    }
+  }
+]
