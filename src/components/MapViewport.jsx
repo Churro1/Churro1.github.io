@@ -1,35 +1,49 @@
-import { PixiComponent, useApp } from '@pixi/react';
+import { useApplication, extend } from '@pixi/react';
 import { Viewport } from 'pixi-viewport';
+import { forwardRef, useEffect, useRef } from 'react';
 
-export const MapViewport = PixiComponent('Viewport', {
-  create: (props) => {
-    const viewport = new Viewport({
-      screenWidth: window.innerWidth,
-      screenHeight: window.innerHeight,
-      worldWidth: 3000, // Total width of your mountain map
-      worldHeight: 2000, // Total height
-      events: props.app.renderer.events,
-    });
+// Register the Viewport class with Pixi React
+extend({ Viewport });
 
-    // Enable free-exploration mechanics
-    viewport
-      .drag()
-      .pinch()
-      .wheel()
-      .decelerate()
-      .clampZoom({ minWidth: 800, maxWidth: 4000 });
+export const MapViewport = forwardRef(({ focusPoint, children }, ref) => {
+  const app = useApp();
+  const viewportRef = useRef(null);
 
-    return viewport;
-  },
-  applyProps: (viewport, oldProps, newProps) => {
-    // If a user clicks a "Next Checkpoint" button, animate the camera to those coordinates
-    if (newProps.focusPoint && newProps.focusPoint !== oldProps.focusPoint) {
-      viewport.animate({
-        position: newProps.focusPoint,
+  // Initialize the camera interactions once on mount
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (viewport) {
+      viewport
+        .drag()
+        .pinch()
+        .wheel()
+        .decelerate()
+        .clampZoom({ minWidth: 800, maxWidth: 4000 });
+    }
+  }, []);
+
+  // Handle camera panning when the focus point changes
+  useEffect(() => {
+    if (focusPoint && viewportRef.current) {
+      viewportRef.current.animate({
+        position: focusPoint,
         scale: 1.5,
         time: 1000,
         ease: 'easeInOutSine'
       });
     }
-  }
+  }, [focusPoint]);
+
+  return (
+    <viewport
+      ref={viewportRef}
+      screenWidth={window.innerWidth}
+      screenHeight={window.innerHeight}
+      worldWidth={3000}
+      worldHeight={2000}
+      events={app.renderer.events}
+    >
+      {children}
+    </viewport>
+  );
 });

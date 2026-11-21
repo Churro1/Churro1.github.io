@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import { Stage, Container, Text } from '@pixi/react';
+import { Application, extend } from '@pixi/react';
+import { Container, Text } from 'pixi.js';
+import * as PIXI from 'pixi.js';
 import { MapViewport } from './components/MapViewport';
 import Trail from './components/Trail';
 import trailData from './data/trail-route.json';
-import * as PIXI from 'pixi.js';
+
+// 3. Register the classes
+extend({ Container, Text });
 
 export default function App() {
   const [activeCameraTarget, setActiveCameraTarget] = useState(null);
